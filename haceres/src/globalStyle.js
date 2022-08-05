@@ -65,18 +65,18 @@ const GlobalStyle = createGlobalStyle`
     grid-template-columns: repeat(5, 1fr);
   }
 
-  /* BookList Style */
+  /* TodoList Style */
 
-  .book-list {
+  .Todo-list {
     margin: 20px;
   }
 
-  .book-list ul {
+  .Todo-list ul {
     padding: 0;
     list-style-type: none;
   }
 
-  .book-list li {
+  .Todo-list li {
     padding: 10px;
     border-radius: 4px;
     margin: 10px 0;
@@ -85,17 +85,17 @@ const GlobalStyle = createGlobalStyle`
     border-style: dashed;
   }
 
-  .book-list li:hover {
+  .Todo-list li:hover {
     opacity: 0.7;
     text-decoration: line-through;
   }
 
-  .book-list .title {
+  .Todo-list .title {
     font-weight: bold;
     font-size: 1.2em;
   }
 
-  .book-list .author {
+  .Todo-list .author {
     font-size: 0.9em;
   }
 
@@ -104,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
-  /* BookForm Style */
+  /* TodoForm Style */
 
   form {
     padding: 20px;

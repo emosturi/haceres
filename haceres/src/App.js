@@ -1,8 +1,8 @@
 import GlobalStyle from "./globalStyle";
-import BookContextProvider from "./contexts/BookContext";
+import TodoContextProvider from "./contexts/TodoContext";
 import Navbar from "./components/Navbar";
-import BookList from "./components/BookList";
-import BookForm from "./components/BookForm";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 import ThemeContextProvider from "./contexts/ThemeContext";
 
 function App() {
@@ -10,11 +10,11 @@ function App() {
         <div className="App">
             <GlobalStyle />
             <ThemeContextProvider>
-                <BookContextProvider>
+                <TodoContextProvider>
                     <Navbar />
-                    <BookList />
-                    <BookForm />
-                </BookContextProvider>
+                    <TodoList />
+                    <TodoForm />
+                </TodoContextProvider>
             </ThemeContextProvider>
         </div>
     );

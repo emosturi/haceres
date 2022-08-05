@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { BookContext } from "../contexts/BookContext";
+import { TodoContext } from "../contexts/TodoContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import ThemeToggler from "./ThemeToggler";
 import { colors } from "../globalStyle";
 
 const Navbar = () => {
-    const { books } = useContext(BookContext);
+    const { Todos } = useContext(TodoContext);
     const { isDarkTheme, dispatch } = useContext(ThemeContext);
     const themeColor = isDarkTheme ? "light" : "dark";
     const handleClick = () => {
@@ -23,15 +23,14 @@ const Navbar = () => {
                 <style>{`body {background: ${colors.whiteish}  }`}</style>
             )}
             <div className="wrapper">
-                <h1>My List of book</h1>
+                <h1>My List of Todo</h1>
                 <ThemeToggler
                     isDarkTheme={isDarkTheme}
                     handleClick={handleClick}
                     themeColor={themeColor}
                 />
             </div>
-            <h4>(that I'll probs never read)</h4>
-            <p>you have {books.length} books to read (or not)</p>
+            <p>you have {Todos.length} Tasks to do today!</p>
         </div>
     );
 };
