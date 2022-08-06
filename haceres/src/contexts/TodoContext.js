@@ -11,6 +11,7 @@ const TodoContextProvider = (props) => {
 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
+        console.log("pinned state", todos);
     }, [todos]);
 
     return (

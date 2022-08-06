@@ -11,7 +11,7 @@ const TodoDetails = ({ todo }) => {
     const { dispatch } = useContext(TodoContext);
 
     const handleDone = () => {
-        dispatch({ type: "COMPLETE_Todo", id: todo.id });
+        dispatch({ type: "TOGGLE_COMPLETE_Todo", id: todo.id });
     };
 
     const handleDelete = () => {
@@ -19,15 +19,19 @@ const TodoDetails = ({ todo }) => {
     };
     return (
         <li>
-            <div onClick={handleDone}>
+            <div
+                onClick={handleDone}
+                className={todo.done ? `done` : `notDone`}>
                 <div className="title">{todo.title}</div>
                 <div className="time">{todo.time}</div>
             </div>
-            <FontAwesomeIcon
-                className="fa-icon"
-                icon={solid("trash")}
-                onClick={handleDelete}
-            />
+            <div className="trash">
+                <FontAwesomeIcon
+                    className="fa-icon"
+                    icon={solid("trash")}
+                    onClick={handleDelete}
+                />
+            </div>
         </li>
     );
 };
