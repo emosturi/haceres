@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { TodoContext } from "../contexts/TodoContext";
-import { ThemeContext } from "../contexts/ThemeContext";
+import { TodoContext } from "../../contexts/TodoContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import ThemeToggler from "./ThemeToggler";
-import { colors } from "../globalStyle";
+import { colors } from "../../globalStyle";
 
 const Navbar = () => {
-    const { Todos } = useContext(TodoContext);
+    const { todos } = useContext(TodoContext);
     const { isDarkTheme, dispatch } = useContext(ThemeContext);
     const themeColor = isDarkTheme ? "light" : "dark";
     const handleClick = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
                     themeColor={themeColor}
                 />
             </div>
-            <p>you have {Todos.length} Tasks to do today!</p>
+            <p>you have {todos.length} Tasks to do today!</p>
         </div>
     );
 };

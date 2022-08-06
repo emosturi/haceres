@@ -4,17 +4,17 @@ import { TodoReducer } from "../reducers/TodoReducer";
 export const TodoContext = createContext();
 
 const TodoContextProvider = (props) => {
-    const [Todos, dispatch] = useReducer(TodoReducer, [], () => {
-        const localData = localStorage.getItem("Todos");
+    const [todos, dispatch] = useReducer(TodoReducer, [], () => {
+        const localData = localStorage.getItem("todos");
         return localData ? JSON.parse(localData) : [];
     });
 
     useEffect(() => {
-        localStorage.setItem("Todos", JSON.stringify(Todos));
-    }, [Todos]);
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     return (
-        <TodoContext.Provider value={{ Todos, dispatch }}>
+        <TodoContext.Provider value={{ todos, dispatch }}>
             {props.children}
         </TodoContext.Provider>
     );

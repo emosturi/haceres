@@ -1,8 +1,8 @@
 import GlobalStyle from "./globalStyle";
 import TodoContextProvider from "./contexts/TodoContext";
-import Navbar from "./components/Navbar";
-import TodoList from "./components/TodoList";
-import TodoForm from "./components/TodoForm";
+import Navbar from "./components/navbar/Navbar";
+import TodoList from "./components/todolist/TodoList";
+import TodoForm from "./components/todoform/TodoForm";
 import ThemeContextProvider from "./contexts/ThemeContext";
 
 function App() {

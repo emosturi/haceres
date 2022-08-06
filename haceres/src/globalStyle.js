@@ -95,13 +95,21 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.2em;
   }
 
-  .Todo-list .author {
+  .Todo-list .time {
     font-size: 0.9em;
   }
 
   .empty {
     margin: 20px;
     text-align: center;
+  }
+
+  /* TodoDetails Style */
+
+  .fa-icon{
+    float: right;
+    margin-top: -25px;
+    margin-right: 5px;
   }
 
   /* TodoForm Style */

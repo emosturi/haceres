@@ -1,18 +1,18 @@
 import React, { useContext, useState } from "react";
-import { TodoContext } from "../contexts/TodoContext";
-import { ThemeContext } from "../contexts/ThemeContext";
+import { TodoContext } from "../../contexts/TodoContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const TodoForm = () => {
     const [title, setTitle] = useState("");
-    const [author, setAuthor] = useState("");
+    const [time, setTime] = useState("");
     const { dispatch } = useContext(TodoContext);
     const { isDarkTheme } = useContext(ThemeContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({ type: "ADD_Todo", Todo: { author, title } });
+        dispatch({ type: "ADD_Todo", todo: { time, title } });
         setTitle("");
-        setAuthor("");
+        setTime("");
     };
 
     return (
@@ -26,11 +26,11 @@ const TodoForm = () => {
                 className={`${isDarkTheme ? "dark" : ""}`}
             />
             <input
-                type="text"
-                placeholder="Todo author..."
+                type="time"
+                placeholder="Todo time..."
                 required
-                value={author}
-                onChange={(event) => setAuthor(event.target.value)}
+                value={time}
+                onChange={(event) => setTime(event.target.value)}
                 className={`${isDarkTheme ? "dark" : ""}`}
             />
             <input
