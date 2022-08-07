@@ -16,15 +16,19 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+// ----------------------------------------------------------------------------------------------
 /* Theming Class Style */
-
+// ----------------------------------------------------------------------------------------------
+  
   .dark {
     background: ${colors.componentsGrey};
     color: ${colors.whiteish};
   }
 
+// ----------------------------------------------------------------------------------------------
 /* App Style */
-
+//  ---------------------------------------------------------------------------------------------
+  
   .App {
     margin: 20px auto;
     width: 90%;
@@ -34,7 +38,9 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 4px;
   }
 
+  // --------------------------------------------------------------------------------------------
   /* Navbar Style */
+  // --------------------------------------------------------------------------------------------
 
   .navbar {
     padding: 10px 20px;
@@ -63,10 +69,27 @@ const GlobalStyle = createGlobalStyle`
   .wrapper {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    display: inline-block;
   }
 
-  /* TodoList Style */
+  .nav-link-dark{
+    margin-top: 20px;
+    margin-left: 10px;    
+    text-decoration: none;
+    color: ${colors.whiteish};
+  }
 
+  .nav-link {
+    margin-top: 20px;
+    margin-left: 10px;  
+    text-decoration: none;
+    color: ${colors.greyish};
+  }
+
+// ------------------------------------------------------------------------------------------------
+  /* TodoList Style */
+// ------------------------------------------------------------------------------------------------
+  
   .Todo-list {
     margin: 20px;
   }
@@ -121,8 +144,10 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
+// ------------------------------------------------------------------------------------------------
   /* TodoDetails Style */
-
+// ------------------------------------------------------------------------------------------------
+  
   .fa-icon{
     float: right;
     margin-top: -25px;
@@ -130,8 +155,10 @@ const GlobalStyle = createGlobalStyle`
     color: magenta;
   }
 
+// ------------------------------------------------------------------------------------------------
   /* TodoForm Style */
-
+// ------------------------------------------------------------------------------------------------
+  
   form {
     padding: 20px;
   }

@@ -3,7 +3,9 @@ import { TodoContext } from "../../contexts/TodoContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import ThemeToggler from "./ThemeToggler";
 import { colors } from "../../globalStyle";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignIn, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
     const { todos } = useContext(TodoContext);
@@ -25,6 +27,20 @@ const Navbar = () => {
                     <style>{`body {background: ${colors.whiteish}  }`}</style>
                 )}
                 <div className="wrapper">
+                    <Link
+                        className={`${
+                            isDarkTheme ? "nav-link-dark" : "nav-link"
+                        }`}
+                        to="/signin">
+                        <FontAwesomeIcon icon={faSignIn} /> SignIn
+                    </Link>
+                    <Link
+                        className={`${
+                            isDarkTheme ? "nav-link-dark" : "nav-link"
+                        }`}
+                        to="/">
+                        <FontAwesomeIcon icon={faTasks} /> MySchedoo
+                    </Link>
                     <h1>My List of Todo</h1>
                     <ThemeToggler
                         isDarkTheme={isDarkTheme}
