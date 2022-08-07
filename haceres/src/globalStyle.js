@@ -85,24 +85,26 @@ const GlobalStyle = createGlobalStyle`
     border-style: dashed;
   }
 
-  .Todo-list .notDone {
-    color: orange;
+  @media (hover: hover){
+    .Todo-list .notDone:hover {
+      opacity: 0.7;
+      text-decoration: line-through;
+    }
+
+    .Todo-list .done:hover {
+      opacity: 0.7;
+      text-decoration: none;
+    }
   }
 
-  .Todo-list .notDone:hover {
-    opacity: 0.7;
-    text-decoration: line-through;
+  .Todo-list .notDone {
+    color: orange;
   }
 
   .Todo-list li .done {
     opacity: 0.5;
     color: white;
     text-decoration: line-through;
-  }
-
-  .Todo-list .done:hover {
-    opacity: 1;
-    text-decoration: none;
   }
 
   .Todo-list .title {
@@ -126,10 +128,6 @@ const GlobalStyle = createGlobalStyle`
     margin-top: -25px;
     margin-right: 5px;
     color: magenta;
-  }
-
-  svg:hover{
-    transform: rotate(30deg);
   }
 
   /* TodoForm Style */
