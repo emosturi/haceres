@@ -12,8 +12,8 @@ function App() {
             <ThemeContextProvider>
                 <TodoContextProvider>
                     <Navbar />
-                    <TodoList />
                     <TodoForm />
+                    <TodoList />
                 </TodoContextProvider>
             </ThemeContextProvider>
         </div>
