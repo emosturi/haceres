@@ -18,14 +18,13 @@ const TodoDetails = ({ todo }) => {
         dispatch({ type: "REMOVE_Todo", id: todo.id });
     };
     return (
-        <li>
+        <li className="li-row">
             <div
                 onClick={handleDone}
-                className={todo.done ? `done` : `notDone`}>
+                className={todo.done ? `done` : `notDone`}
+                style={{ backgroundColor: "black" }}>
                 <div className="title">{todo.title}</div>
                 <div className="time">{todo.time}</div>
-            </div>
-            <div className="trash">
                 <FontAwesomeIcon
                     className="fa-icon"
                     icon={solid("trash")}
