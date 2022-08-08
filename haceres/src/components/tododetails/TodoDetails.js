@@ -22,6 +22,10 @@ const TodoDetails = ({ todo }) => {
             <div
                 onClick={handleDone}
                 className={todo.done ? `done` : `notDone`}
+<<<<<<< HEAD
+=======
+                style={{ backgroundColor: "black" }}>
+>>>>>>> 0e620cfb3808e12bcc2a1b19599ec89c397e2d8c
                 <div className="title">{todo.title}</div>
                 <div className="time">{todo.time}</div>
                 <FontAwesomeIcon
