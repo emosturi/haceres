@@ -6,11 +6,17 @@ import { colors } from "../../globalStyle";
 import { Outlet, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignIn, faTasks } from "@fortawesome/free-solid-svg-icons";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../utils/firebase/firebase.utils";
 
 const Navbar = () => {
     const { todos } = useContext(TodoContext);
     const { isDarkTheme, dispatch } = useContext(ThemeContext);
+    const [user] = useAuthState(auth);
+    console.log(user);
+
     const themeColor = isDarkTheme ? "light" : "dark";
+
     const handleClick = () => {
         dispatch({ type: "TOGGLE_THEME", isDarkTheme: !isDarkTheme });
     };
