@@ -17,7 +17,10 @@ function App() {
                 <TodoContextProvider>
                     <Routes>
                         <Route path="/" element={<Navbar />}>
-                            {user && <Route index element={<Main />} />}
+                            <Route
+                                index
+                                element={user ? <Main /> : <SignIn />}
+                            />
                             <Route path="signin" element={<SignIn />} />
                         </Route>
                     </Routes>
