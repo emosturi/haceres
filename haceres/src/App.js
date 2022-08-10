@@ -19,7 +19,9 @@ function App() {
                         <Route path="/" element={<Navbar />}>
                             <Route
                                 index
-                                element={user ? <Main /> : <SignIn />}
+                                element={
+                                    user ? <Main /> : <SignIn user={user} />
+                                }
                             />
                             <Route path="signin" element={<SignIn />} />
                         </Route>

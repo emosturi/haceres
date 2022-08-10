@@ -1,9 +1,20 @@
+//-------------------------------------------------------------------------------------------------
 // Import the functions you need from the SDKs you need
+//-------------------------------------------------------------------------------------------------
+
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+} from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
+//-------------------------------------------------------------------------------------------------
 // Your web app's Firebase configuration
+//-------------------------------------------------------------------------------------------------
+
 const firebaseConfig = {
     apiKey: "AIzaSyB9ldPEsig6sGzGtlyhYZut5cTrAWzpad4",
     authDomain: "schedoo-db.firebaseapp.com",
@@ -13,12 +24,15 @@ const firebaseConfig = {
     appId: "1:848892930008:web:f48220a21485ce4ab774ad",
 };
 
+//-------------------------------------------------------------------------------------------------
 // Initialize Firebase
+//-------------------------------------------------------------------------------------------------
+
 const firebaseApp = initializeApp(firebaseConfig);
 
-// ---------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Google Authentication Section
-// ---------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 const provider = new GoogleAuthProvider();
 
@@ -28,6 +42,7 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signOutWithGoogle = () => signOut(auth);
 
 // ---------------------------------------------------------------------------------------------------
 // Firestore DB & Document Creation Section

@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { TodoContext } from "../../contexts/TodoContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { colors } from "../../globalStyle";
 import { Outlet } from "react-router-dom";
 import Navwrapper from "./Navwrapper";
 
 const Navbar = () => {
-    const { todos } = useContext(TodoContext);
     const { isDarkTheme, dispatch } = useContext(ThemeContext);
 
     const handleClick = () => {
@@ -28,7 +26,6 @@ const Navbar = () => {
                     handleClick={handleClick}
                     isDarkTheme={isDarkTheme}
                 />
-                <p>you have {todos.length} Tasks to do today!</p>
             </div>
             <Outlet />
         </>
