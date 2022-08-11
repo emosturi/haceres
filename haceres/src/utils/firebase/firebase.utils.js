@@ -28,7 +28,7 @@ const firebaseConfig = {
 // Initialize Firebase
 //-------------------------------------------------------------------------------------------------
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 // ------------------------------------------------------------------------------------------------
 // Google Authentication Section
@@ -49,6 +49,7 @@ export const signOutWithGoogle = () => signOut(auth);
 // ---------------------------------------------------------------------------------------------------
 
 export const db = getFirestore();
+
 export const createDocumentFromAuth = async (userAuth) => {
     const userDocRef = doc(db, "users", userAuth.user.uid);
     const userSnapShot = await getDoc(userDocRef);
