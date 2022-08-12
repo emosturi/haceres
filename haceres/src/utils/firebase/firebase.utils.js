@@ -6,10 +6,19 @@ import { initializeApp } from "firebase/app";
 import {
     getAuth,
     GoogleAuthProvider,
+    onAuthStateChanged,
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    getDocs,
+    collection,
+} from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 //-------------------------------------------------------------------------------------------------
 // Your web app's Firebase configuration

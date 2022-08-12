@@ -1,18 +1,16 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import { collection, DocumentSnapshot, getDocs } from "firebase/firestore";
+import React, { createContext, useReducer } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { TodoReducer } from "../reducers/TodoReducer";
+import { auth, db } from "../utils/firebase/firebase.utils";
 
 export const TodoContext = createContext();
 
 const TodoContextProvider = (props) => {
-    const [todos, dispatch] = useReducer(TodoReducer, [], () => {
-        const localData = localStorage.getItem("todos");
-        return localData ? JSON.parse(localData) : [];
+    const [todos, dispatch] = useReducer(TodoReducer, [], async () => {
+        // const localData = localStorage.getItem("todos");
+        // return localData ? JSON.parse(localData) : [];
     });
-
-    useEffect(() => {
-        localStorage.setItem("todos", JSON.stringify(todos));
-        console.log("pinned state", todos);
-    }, [todos]);
 
     return (
         <TodoContext.Provider value={{ todos, dispatch }}>

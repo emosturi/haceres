@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { TodoContext } from "../../contexts/TodoContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-const TodoForm = () => {
+const TodoForm = ({ todos, user, todosRef }) => {
     const [title, setTitle] = useState("");
     const [time, setTime] = useState("");
     const { dispatch } = useContext(TodoContext);

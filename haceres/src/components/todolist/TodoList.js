@@ -6,28 +6,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const TodoList = () => {
+const TodoList = ({ todosRef, user, todos }) => {
     // const { todos } = useContext(TodoContext);
-    const [todos, setTodos] = useState([]);
     const { isDarkTheme } = useContext(ThemeContext);
-    const [user] = useAuthState(auth);
-
-    useEffect(() => {
-        console.log(user);
-        if (user) {
-            const todosRef = collection(db, "users/" + user.uid + "/todos");
-            console.log(todosRef);
-            const arrayOfTodos = [];
-            const getTodos = async () => {
-                const response = await getDocs(todosRef);
-                response.docs.forEach((doc) => {
-                    arrayOfTodos.push({ ...doc.data() });
-                });
-                setTodos([...arrayOfTodos]);
-            };
-            getTodos();
-        }
-    }, [user]);
 
     //This should become a customizable sort for client use
     const todosSortedByDate = todos.sort(
@@ -38,7 +19,10 @@ const TodoList = () => {
         <div className={`Todo-list ${isDarkTheme ? "dark" : ""}`}>
             <ul>
                 {todosSortedByDate.map((todo, id) => (
-                    <TodoDetails key={todo.id + id} todo={todo} />
+                    <TodoDetails
+                        key={parseInt(todo.time) * parseInt(id)}
+                        todo={todo}
+                    />
                 ))}
             </ul>
         </div>
