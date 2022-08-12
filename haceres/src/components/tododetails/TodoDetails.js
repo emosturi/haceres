@@ -3,17 +3,13 @@ import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
-const TodoDetails = ({ todo, handleDelete }) => {
+const TodoDetails = ({ todo, handleDelete, handleUpdate }) => {
     // const { dispatch } = useContext(TodoContext);
-
-    const handleDone = () => {
-        // dispatch({ type: "TOGGLE_COMPLETE_Todo", id: todo.id });
-    };
 
     return (
         <li className="li-row">
             <div
-                onClick={handleDone}
+                onClick={() => handleUpdate(todo.id, todo)}
                 className={todo.done ? `done` : `notDone`}>
                 <div className="title">{todo.title}</div>
                 <div className="time">{todo.time}</div>

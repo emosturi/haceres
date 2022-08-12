@@ -13,7 +13,6 @@ const TodoForm = ({ handleNewTodos, todosRef }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // dispatch({ type: "ADD_Todo", todo: { time, title } });
-        console.log("entrada al query");
         try {
             const docRef = await addDoc(todosRef, {
                 title,
@@ -21,7 +20,6 @@ const TodoForm = ({ handleNewTodos, todosRef }) => {
                 day,
                 done: false,
             });
-            console.log("Document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -29,7 +27,6 @@ const TodoForm = ({ handleNewTodos, todosRef }) => {
         setTitle("");
         setTime("");
     };
-    console.log(`${title} - ${time} - ${day}`);
 
     return (
         <form onSubmit={handleSubmit}>

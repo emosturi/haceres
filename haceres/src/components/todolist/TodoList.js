@@ -6,7 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const TodoList = ({ handleDelete, user, todos }) => {
+const TodoList = ({ handleDelete, handleUpdate, user, todos }) => {
     // const { todos } = useContext(TodoContext);
     const { isDarkTheme } = useContext(ThemeContext);
 
@@ -23,6 +23,7 @@ const TodoList = ({ handleDelete, user, todos }) => {
                         key={todo.id}
                         todo={todo}
                         handleDelete={handleDelete}
+                        handleUpdate={handleUpdate}
                     />
                 ))}
             </ul>

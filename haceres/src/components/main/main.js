@@ -1,4 +1,10 @@
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    getDocs,
+    updateDoc,
+} from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { TodoContext } from "../../contexts/TodoContext";
@@ -10,7 +16,6 @@ const Main = () => {
     const [todos, setTodos] = useState([]);
     const [user] = useAuthState(auth);
     const todosRef = collection(db, "users/" + user.uid + "/todos");
-    console.log(user);
 
     useEffect(() => {
         if (user) {
@@ -19,22 +24,37 @@ const Main = () => {
     }, [user]);
 
     const handleNewTodos = async () => {
-        const arrayOfTodos = [];
-        const response = await getDocs(todosRef);
-        response.docs.forEach((doc) => {
-            arrayOfTodos.push({ ...doc.data(), id: doc.id });
-        });
-        setTodos([...arrayOfTodos]);
+        try {
+            const arrayOfTodos = [];
+            const response = await getDocs(todosRef);
+            response.docs.forEach((doc) => {
+                arrayOfTodos.push({ ...doc.data(), id: doc.id });
+            });
+            setTodos([...arrayOfTodos]);
+        } catch (e) {
+            console.log("Error while fetching documents: ", e);
+        }
     };
 
     const handleDelete = async (id) => {
         try {
             const path = "users/" + user.uid + "/todos";
             await deleteDoc(doc(db, path, id));
-            console.log("Document deleted with ID: ", id);
             handleNewTodos();
         } catch (e) {
-            console.error("Error in my attempt of deleting a document: ", e);
+            console.error("Error deleting a document: ", e);
+        }
+    };
+
+    const handleUpdate = async (id, todo) => {
+        try {
+            const path = "users/" + user.uid + "/todos";
+            await updateDoc(doc(db, path, id), {
+                done: !todo.done,
+            });
+            handleNewTodos();
+        } catch (e) {
+            console.error("Error editing a document: ", e);
         }
     };
 
@@ -45,7 +65,12 @@ const Main = () => {
                 todosRef={todosRef}
                 user={user}
             />
-            <TodoList todos={todos} handleDelete={handleDelete} user={user} />
+            <TodoList
+                todos={todos}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                user={user}
+            />
         </>
     );
 };
