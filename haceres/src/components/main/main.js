@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { TodoContext } from "../../contexts/TodoContext";
@@ -11,6 +11,7 @@ const Main = () => {
     const [user] = useAuthState(auth);
     const todosRef = collection(db, "users/" + user.uid + "/todos");
     console.log(user);
+
     useEffect(() => {
         if (user) {
             handleNewTodos();
@@ -21,9 +22,20 @@ const Main = () => {
         const arrayOfTodos = [];
         const response = await getDocs(todosRef);
         response.docs.forEach((doc) => {
-            arrayOfTodos.push({ ...doc.data() });
+            arrayOfTodos.push({ ...doc.data(), id: doc.id });
         });
         setTodos([...arrayOfTodos]);
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            const path = "users/" + user.uid + "/todos";
+            await deleteDoc(doc(db, path, id));
+            console.log("Document deleted with ID: ", id);
+            handleNewTodos();
+        } catch (e) {
+            console.error("Error in my attempt of deleting a document: ", e);
+        }
     };
 
     return (
@@ -33,7 +45,7 @@ const Main = () => {
                 todosRef={todosRef}
                 user={user}
             />
-            <TodoList todos={todos} todosRef={todosRef} user={user} />
+            <TodoList todos={todos} handleDelete={handleDelete} user={user} />
         </>
     );
 };

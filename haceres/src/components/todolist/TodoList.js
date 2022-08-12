@@ -6,7 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const TodoList = ({ todosRef, user, todos }) => {
+const TodoList = ({ handleDelete, user, todos }) => {
     // const { todos } = useContext(TodoContext);
     const { isDarkTheme } = useContext(ThemeContext);
 
@@ -18,10 +18,11 @@ const TodoList = ({ todosRef, user, todos }) => {
     return todos.length ? (
         <div className={`Todo-list ${isDarkTheme ? "dark" : ""}`}>
             <ul>
-                {todosSortedByDate.map((todo, id) => (
+                {todosSortedByDate.map((todo) => (
                     <TodoDetails
-                        key={parseInt(todo.time) * parseInt(id)}
+                        key={todo.id}
                         todo={todo}
+                        handleDelete={handleDelete}
                     />
                 ))}
             </ul>

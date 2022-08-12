@@ -3,16 +3,13 @@ import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
-const TodoDetails = ({ todo }) => {
+const TodoDetails = ({ todo, handleDelete }) => {
     // const { dispatch } = useContext(TodoContext);
 
     const handleDone = () => {
         // dispatch({ type: "TOGGLE_COMPLETE_Todo", id: todo.id });
     };
 
-    const handleDelete = () => {
-        // dispatch({ type: "REMOVE_Todo", id: todo.id });
-    };
     return (
         <li className="li-row">
             <div
@@ -23,7 +20,7 @@ const TodoDetails = ({ todo }) => {
                 <FontAwesomeIcon
                     className="fa-icon"
                     icon={solid("trash")}
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(todo.id)}
                 />
             </div>
         </li>
